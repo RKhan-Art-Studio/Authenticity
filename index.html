@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>RKhan Art Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    function checkOrientation() {
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      const isPortrait = window.innerHeight > window.innerWidth;
+
+      if (isMobile && isPortrait) {
+        alert("Rotate your phone please 📱↪️");
+        setTimeout(checkOrientation, 1500); // Cek ulang tiap 1.5 detik
+      } else {
+        window.location.href = "https://rkhanartstudio.my.canva.site/agr-1151-5-001";
+      }
+    }
+
+    // Jalankan saat halaman dimuat dan saat ukuran layar berubah
+    window.onload = checkOrientation;
+    window.onresize = checkOrientation;
+
+    // Matikan cache agar alert tetap muncul
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script>
+</head>
+<body>
+  <h2 style="text-align:center; margin-top:50px;">Checking device orientation...</h2>
+</body>
+</html>
